@@ -1,0 +1,34 @@
+{% extends "./plantilla.html" %}]
+{% block body %}
+<div class="card">
+    <div class="card-title text-center">
+        <h3><b>Listado de Paises</b></h3> 
+    </div>
+</div>
+<br>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CONTINENTE</th>
+            <th>CAPITAL</th>
+            <th>ACCIOn</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paisTemporal in paises%}
+        <tr>
+            <td>{{paisTemporal.id}}</td>
+            <td>{{paisTemporal.nombre}}</td>
+            <td>{{paisTemporal.continente}}</td>
+            <td>{{paisTemporal.capital}}</td>
+            <td>
+                <a href="{% url 'editarPais' paisTemporal.id %}" class="btn btn-warning">Editar</a>
+               
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

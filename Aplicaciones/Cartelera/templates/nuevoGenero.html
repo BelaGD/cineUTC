@@ -1,0 +1,61 @@
+
+{% extends "./plantilla.html" %}
+{% load static %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{% url 'guardarGenero' %}" enctype="multipart/form-data" id="frm_nuevo_genero" method="post">
+                {% csrf_token %}
+                <label for=""><b>Nombre:</b></label>
+                <input type="text" name="nombre" class="form-control"
+                id="nombre" placeholder="Ingrese el nombre del genero">
+                <br>
+                <label for=""><b>Descripion:</b></label>
+                <textarea name="descripcion" id="descripcion"
+                class="form-control" rows="3"
+                placeholder="Ingrese la descripcion"
+                ></textarea>
+                <br>
+                <label for=""><b>Fotogografía:</b></label>
+                <input type="file" name="foto" id="foto" 
+                accept="image/*"
+                required class="form-control">
+                <button type="submit" class="btn btn-primary">
+                    guardar</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'listadoGeneros' %}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#frm_nuevo_genero").validate({
+        rules:{
+            nombre:{
+                required:true
+            },
+            descripcion:{
+                required:true
+            },
+            foto:{
+                required:true
+            }
+
+        },
+        messages:{
+            nombre:{
+                required:"Por favor ingrese el nombre"
+            },
+            descripcion:{
+                required:"Por favor ingrese la descripcion"
+            },
+            foto:{
+                required:"Por favor ingrese la foto"
+            }
+
+        }
+    });
+</script>
+{% endblock %}

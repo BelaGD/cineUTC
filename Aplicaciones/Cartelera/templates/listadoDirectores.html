@@ -1,0 +1,27 @@
+{% extends "./plantilla.html" %}]
+{% block body %}
+<div class="card">
+    <div class="card-title text-center">
+        <h3><b>Listado de Directores</b></h3> 
+    </div>
+</div>
+<br>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for directorTemporal in directores%}
+        <tr>
+            <td>{{directorTemporal.id}}</td>
+            <td>{{directorTemporal.dni}}</td>
+            <td>{{directorTemporal.nombre}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
